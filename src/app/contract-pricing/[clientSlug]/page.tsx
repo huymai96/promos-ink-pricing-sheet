@@ -103,7 +103,7 @@ export default function ContractPricingPage() {
             icon="🖨️"
             title="Screen Printing"
             subtitle="Flat Goods Pricing"
-            description="Max print size: 14.5" x 16.5" | Per piece pricing based on quantity and color count"
+            description='Max print size: 14.5" x 16.5" | Per piece pricing based on quantity and color count'
             accentColor={brandColors.services.screenPrint}
           />
           
