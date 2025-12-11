@@ -1,84 +1,50 @@
 @import "tailwindcss";
 
 /* ============================================
-   PROMOS INK - DESIGN TOKENS
-   Premium B2B Contract Pricing Sheet
+   PROMOS INK - DESIGN SYSTEM CSS
+   Brand colors from logo: Rainbow spectrum + Ink black
    ============================================ */
 
 :root {
-  /* === BRAND COLORS === */
-  --ink-black: #0d0d0d;
-  --ink-charcoal: #1a1a1a;
-  --ink-graphite: #2d2d2d;
-  --ink-slate: #404040;
-  --ink-silver: #9ca3af;
-  --ink-cloud: #f4f4f5;
-  --ink-white: #ffffff;
+  /* Rainbow Spectrum (from "PROMOS" logo) */
+  --rainbow-red: #E53935;
+  --rainbow-orange: #FB8C00;
+  --rainbow-yellow: #FDD835;
+  --rainbow-green: #43A047;
+  --rainbow-cyan: #00ACC1;
+  --rainbow-blue: #1E88E5;
+  --rainbow-purple: #8E24AA;
   
-  /* === RAINBOW SPECTRUM (Brand Signature) === */
-  --spectrum-red: #ef4444;
-  --spectrum-orange: #f97316;
-  --spectrum-amber: #f59e0b;
-  --spectrum-yellow: #eab308;
-  --spectrum-lime: #84cc16;
-  --spectrum-green: #22c55e;
-  --spectrum-teal: #14b8a6;
-  --spectrum-cyan: #06b6d4;
-  --spectrum-blue: #3b82f6;
-  --spectrum-indigo: #6366f1;
-  --spectrum-violet: #8b5cf6;
-  --spectrum-purple: #a855f7;
-  --spectrum-pink: #ec4899;
-  --spectrum-rose: #f43f5e;
+  /* Ink Brand Colors */
+  --ink-black: #1A1A1A;
+  --ink-charcoal: #2D2D2D;
+  --ink-graphite: #404040;
+  --ink-slate: #6B7280;
+  --ink-silver: #9CA3AF;
+  --ink-cloud: #F3F4F6;
+  --ink-white: #FFFFFF;
   
-  /* === SERVICE COLORS === */
-  --screen-print: #3b82f6;
-  --embroidery: #8b5cf6;
-  --digital: #06b6d4;
-  --fulfillment: #22c55e;
+  /* Service Colors */
+  --service-screen: #1E88E5;
+  --service-emb: #8E24AA;
+  --service-dtg: #00ACC1;
+  --service-dtf: #00897B;
+  --service-fulfillment: #43A047;
   
-  /* === TYPOGRAPHY === */
-  --font-display: 'Clash Display', 'SF Pro Display', system-ui, sans-serif;
-  --font-body: 'Inter', 'SF Pro Text', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
-  
-  /* === SPACING SCALE === */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.25rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-10: 2.5rem;
-  --space-12: 3rem;
-  --space-16: 4rem;
-  --space-20: 5rem;
-  
-  /* === SHADOWS === */
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
-  --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
-  --shadow-glow: 0 0 40px rgba(59, 130, 246, 0.3);
-  
-  /* === GRADIENTS === */
-  --gradient-rainbow: linear-gradient(
-    90deg,
-    var(--spectrum-red),
-    var(--spectrum-orange),
-    var(--spectrum-yellow),
-    var(--spectrum-green),
-    var(--spectrum-blue),
-    var(--spectrum-indigo),
-    var(--spectrum-violet)
+  /* Gradients */
+  --gradient-rainbow: linear-gradient(90deg, 
+    var(--rainbow-red), 
+    var(--rainbow-orange), 
+    var(--rainbow-yellow), 
+    var(--rainbow-green), 
+    var(--rainbow-cyan), 
+    var(--rainbow-blue), 
+    var(--rainbow-purple)
   );
-  
-  --gradient-dark: linear-gradient(180deg, var(--ink-black) 0%, var(--ink-charcoal) 100%);
-  --gradient-card: linear-gradient(145deg, var(--ink-charcoal) 0%, var(--ink-graphite) 100%);
 }
 
 /* ============================================
-   GLOBAL STYLES
+   BASE STYLES
    ============================================ */
 
 @layer base {
@@ -93,58 +59,14 @@
   }
   
   body {
-    font-family: var(--font-body);
-    background: var(--ink-black);
-    color: var(--ink-white);
-    line-height: 1.6;
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.5;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.02em;
-  }
-}
-
-/* ============================================
-   PRINT STYLES - Optimized for PDF Export
-   ============================================ */
-
-@media print {
-  @page {
-    size: letter;
-    margin: 0.5in;
-  }
-  
-  body {
-    background: white !important;
-    color: black !important;
-    font-size: 10pt;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-  
-  .page-break {
-    page-break-before: always;
-  }
-  
-  .no-print {
-    display: none !important;
-  }
-  
-  .print-dark-bg {
-    background: var(--ink-black) !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-  
-  table {
-    page-break-inside: avoid;
-  }
-  
-  tr {
-    page-break-inside: avoid;
   }
 }
 
@@ -159,112 +81,38 @@
   background-clip: text;
 }
 
-.rainbow-border {
-  position: relative;
-}
-
-.rainbow-border::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  padding: 2px;
+.rainbow-bar {
+  height: 4px;
   background: var(--gradient-rainbow);
-  border-radius: inherit;
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: xor;
-  -webkit-mask-composite: xor;
+  border-radius: 2px;
 }
 
 .glass-card {
-  background: rgba(26, 26, 26, 0.8);
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.glow-blue {
-  box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
-}
+/* ============================================
+   PRINT STYLES
+   ============================================ */
 
-.glow-purple {
-  box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
-}
-
-.glow-cyan {
-  box-shadow: 0 0 30px rgba(6, 182, 212, 0.4);
-}
-
-.glow-green {
-  box-shadow: 0 0 30px rgba(34, 197, 94, 0.4);
-}
-
-/* Animated gradient background */
-.animated-gradient {
-  background: linear-gradient(
-    -45deg,
-    var(--ink-black),
-    var(--ink-charcoal),
-    #1e1b4b,
-    #0c1929
-  );
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
-}
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Table styles */
-.pricing-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.pricing-table th {
-  background: var(--ink-graphite);
-  color: var(--ink-white);
-  font-weight: 600;
-  text-align: center;
-  padding: 12px 8px;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.pricing-table td {
-  padding: 10px 8px;
-  text-align: center;
-  font-size: 0.875rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.pricing-table tr:nth-child(even) td {
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.pricing-table tr:hover td {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.pricing-table .price {
-  font-family: var(--font-mono);
-  font-weight: 500;
-}
-
-/* Section header badge */
-.section-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 16px;
-  border-radius: 100px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+@media print {
+  @page {
+    size: letter;
+    margin: 0.5in;
+  }
+  
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  .page-break {
+    page-break-before: always;
+  }
 }
